@@ -1,4 +1,4 @@
-import { pf } from '../Default'
+import { pf, JSDELIVR_CDN } from '../Default'
 import getScript from './plugins/getScript'
 import getScriptfun from './plugins/getScriptfun'
 import GetIP from './plugins/GetIP'
@@ -16,13 +16,13 @@ const script = (root, init = false) => {
       vendor.push('npm/ua-parser-js@0.7.22/src/ua-parser.min.js')
     }
     if ((root.math || typeof root.config.math == 'undefined') && typeof MathJax === 'undefined') {
-      vendor.push('npm/mathjax@3/es5/tex-svg.js')
+      vendor.push('npm/mathjax@3.2.2/es5/tex-svg.js')
     }
     if ((root.md || typeof root.config.md == 'undefined') && !window.marked) {
       vendor.push('npm/marked@1.2.0/lib/marked.min.js')
     }
 
-    getScriptfun('https://cdn.jsdelivr.net/combine/' + vendor.join(','), function() {
+    getScriptfun(JSDELIVR_CDN + '/combine/' + vendor.join(','), function() {
       root.initBody()
       window.MV.scriptEle = true
     }, window.MV.scriptEle == true || vendor.length == 0 )
@@ -42,10 +42,10 @@ const script = (root, init = false) => {
     }
 
     if (!window.AV) {
-      vendor.push('npm/leancloud-storage@4/dist/av-min.js')
+      vendor.push('npm/leancloud-storage@4.15.0/dist/av-min.js')
     }
 
-    getScriptfun('https://cdn.jsdelivr.net/combine/' + vendor.join(','), function() {
+    getScriptfun(JSDELIVR_CDN + '/combine/' + vendor.join(','), function() {
       root.initCheck()
       window.MV.scriptInit = true
     }, window.MV.scriptInit == true || vendor.length == 0 )

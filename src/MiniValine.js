@@ -27,6 +27,8 @@ MiniValineFactory.prototype.initCheck = function () {
       
       root.ele = body.ele(root)
       util.script(root, 1)
+      // 先加载表情资源
+      util.smile(root)
     }, 5)
   } catch (e) {}
 }
@@ -61,7 +63,6 @@ MiniValineFactory.prototype.initBody = function () {
     util.previewBtnEvt(root)
     util.atEvt(root)
     util.submitBtnEvt(root)
-    util.smile(root)
   } catch (e) {}
 }
 
